@@ -36,3 +36,20 @@ def tagging (data):
                 else:
                     bagOfWords_speak[words_speaker[j]] = 1
     return bagOfWords_time,bagOfWords_loc,bagOfWords_speak
+
+def emission_probability(bagOfWords_time,bagOfWords_loc,bagOfWords_speak):
+    #sum all words in each class
+    sum_time = sum(bagOfWords_time.values())
+    sum_loc = sum(bagOfWords_loc.values())
+    sum_speak = sum(bagOfWords_speak.values())
+    #count emission probability
+    ep_time = {}
+    ep_loc = {}
+    ep_speak = {}
+    for key in bagOfWords_time:
+        ep_time[key] = bagOfWords_time[key]/sum_time
+    for key in bagOfWords_loc:
+        ep_loc[key] = bagOfWords_loc[key]/sum_loc
+    for key in bagOfWords_speak:
+        ep_speak[key] = bagOfWords_speak[key]/sum_speak
+    return ep_time,ep_loc,ep_speak
