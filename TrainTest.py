@@ -53,3 +53,10 @@ def emission_probability(bagOfWords_time,bagOfWords_loc,bagOfWords_speak):
     for key in bagOfWords_speak:
         ep_speak[key] = bagOfWords_speak[key]/sum_speak
     return ep_time,ep_loc,ep_speak
+
+def train(data,n):
+    data_train = []
+    for i in range(n):
+        data_train[i] = data[i]
+    bagOfWords_time,bagOfWords_loc,bagOfWords_speak = tagging(data_train)
+    return emission_probability(bagOfWords_time,bagOfWords_loc,bagOfWords_speak)
